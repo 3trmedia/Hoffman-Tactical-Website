@@ -1,13 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const BASE = 'https://hoffmantactical.com/wp-content/uploads';
+
 const products = [
-  { name: 'SL-9 Kit', price: '$74.00' },
-  { name: 'SL-308 Kit', price: '$94.00' },
-  { name: 'ORCA-15 Kit', price: '$82.00' },
-  { name: 'Trigger Kicker', price: '$24.00' },
-  { name: 'Accessory Kit', price: '$38.00' },
-  { name: 'Lower Parts', price: '$19.00' },
+  {
+    name: 'SL-15 Lower Kit',
+    price: '$89.00',
+    img: `${BASE}/2023/12/SL15RK-Cover-scaled.jpg`,
+    href: '/shop',
+  },
+  {
+    name: 'SL-9 Ready Kit',
+    price: '$74.00',
+    img: `${BASE}/2024/02/SL9-RK-Cover-scaled.jpg`,
+    href: '/shop',
+  },
+  {
+    name: 'SL-308 Kit',
+    price: '$94.00',
+    img: `${BASE}/2025/01/SL-308-Product-Cover-scaled.jpg`,
+    href: '/shop',
+  },
+  {
+    name: 'Trigger Kicker',
+    price: '$43.00',
+    img: `${BASE}/2026/05/Trigger-Kicker-Product-Cover-scaled.jpg`,
+    href: '/shop',
+  },
+  {
+    name: 'SL-308 Combo Kit',
+    price: '$149.00',
+    img: `${BASE}/2025/01/SL-308-Combo-Product-Cover-scaled.jpg`,
+    href: '/shop',
+  },
+  {
+    name: 'SL-9 Complete Build',
+    price: '$119.00',
+    img: `${BASE}/2024/02/SL9-CB-Cover-scaled.jpg`,
+    href: '/shop',
+  },
 ];
 
 const tiles = [
@@ -16,24 +48,28 @@ const tiles = [
     badge: 'Always free.',
     desc: 'Every design we release, at no cost.',
     href: '/designs',
+    img: `${BASE}/2024/04/Rendering-scaled.jpg`,
   },
   {
     label: 'Learn',
     badge: null,
     desc: 'Guides for printing, sourcing, and building.',
     href: '/learn',
+    img: `${BASE}/2025/03/Creep-Test-in-Progress.jpg`,
   },
   {
     label: 'Articles',
     badge: null,
     desc: 'Build logs, breakdowns, and field notes.',
     href: '/articles',
+    img: `${BASE}/2025/03/Ounce-inside-scaled.jpg`,
   },
   {
     label: 'Forum',
     badge: null,
     desc: 'Community questions and project threads.',
-    href: '#forum-external',
+    href: 'https://forum.hoffmantactical.com',
+    img: `${BASE}/2025/03/Forum-Home_framed.jpg`,
   },
 ];
 ---
@@ -41,27 +77,27 @@ const tiles = [
 <Layout title="Hoffman Tactical -- Build It Yourself" description="Free 3D-printable weapon system designs and build kits. Decentralized manufacturing.">
 
   <!-- HERO -->
-  <section class="relative min-h-[85vh] flex items-center overflow-hidden">
-    <!-- Background placeholder -->
-    <div class="absolute inset-0 bg-[#111111]">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#111]/80 to-transparent"></div>
-      <div class="absolute inset-0 flex items-center justify-end opacity-10">
-        <div class="w-full h-full placeholder-img">
-          <span class="placeholder-label">[Hero Product Photo]</span>
-        </div>
-      </div>
+  <section class="relative min-h-[88vh] flex items-end overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://hoffmantactical.com/wp-content/uploads/2025/03/Baby-Orca-Banner-scaled.jpg"
+        alt="ORCA-15 build"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/60 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0d0d0d]/70 via-transparent to-transparent"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <div class="max-w-2xl">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-32 w-full">
+      <div class="max-w-xl">
         <p class="section-label mb-4">Hoffman Tactical</p>
-        <h1 class="font-dm font-extrabold text-6xl sm:text-7xl lg:text-8xl text-ht-text leading-none tracking-tight mb-6">
+        <h1 class="font-dm font-extrabold text-6xl sm:text-7xl lg:text-8xl text-ht-text leading-none tracking-tight mb-5">
           Build It<br />Yourself.
         </h1>
-        <p class="text-ht-muted text-xl sm:text-2xl font-medium mb-10 leading-relaxed">
+        <p class="text-ht-text/80 text-xl font-medium mb-8 leading-relaxed">
           Free designs. Real kits. Decentralized manufacturing.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-3">
           <a href="/shop" class="btn-primary">Shop Kits</a>
           <a href="/designs" class="btn-ghost">Free Designs</a>
         </div>
@@ -69,89 +105,128 @@ const tiles = [
     </div>
   </section>
 
+  <!-- FEATURE STRIP -->
+  <div class="bg-ht-surface border-b border-ht-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-ht-border">
+        {[
+          { title: 'Designs Always Free', body: 'Every weapon system we design is released at no cost.' },
+          { title: 'Kits Are a Convenience', body: 'All hardware can be sourced independently. Kits save time.' },
+          { title: 'Detailed Documentation', body: 'Every design ships with full assembly and sourcing guides.' },
+        ].map(f => (
+          <div class="px-8 py-7">
+            <p class="text-ht-accent text-xs font-bold uppercase tracking-widest mb-1.5">{f.title}</p>
+            <p class="text-ht-muted text-sm leading-relaxed">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
   <!-- FLAGSHIP PRODUCT -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Image -->
-      <div class="placeholder-img h-80 lg:h-96">
-        <span class="placeholder-label">[SL-15 Product Photo]</span>
+      <div class="overflow-hidden bg-ht-surface border border-ht-border">
+        <img
+          src="https://hoffmantactical.com/wp-content/uploads/2023/12/SL15RK-Plate-Group-scaled.jpg"
+          alt="SL-15 Lower Kit hardware"
+          class="w-full h-80 lg:h-[480px] object-cover object-center hover:scale-105 transition-transform duration-700"
+        />
       </div>
-
-      <!-- Info -->
       <div>
         <p class="section-label mb-3">Featured Kit</p>
         <h2 class="font-dm font-extrabold text-4xl sm:text-5xl text-ht-text leading-tight mb-4">SL-15 Lower Kit</h2>
-        <p class="text-ht-muted text-lg leading-relaxed mb-6">
-          Everything you need to build the SL-15 lower. Sourced hardware, documented assembly, no proprietary tools required.
+        <p class="text-ht-muted text-base leading-relaxed mb-6">
+          Everything you need to build the SL-15 lower. Sourced hardware, documented assembly, no proprietary tools required. The design file is always free to download separately.
         </p>
-        <div class="flex items-center gap-4 mb-8">
+        <div class="flex items-baseline gap-3 mb-8">
           <span class="text-ht-text font-bold text-3xl">$89.00</span>
-          <span class="text-ht-muted text-sm">Design files are always free</span>
+          <span class="text-ht-muted text-sm">Free design download available</span>
         </div>
-        <button class="btn-primary">Add to Cart</button>
+        <div class="flex flex-wrap gap-3">
+          <button class="btn-primary">Add to Cart</button>
+          <a href="/designs/sl-15" class="btn-ghost">Free Design Files</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- PRODUCTS GRID -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="mb-10">
-      <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text mb-3">Kits and Parts</h2>
-      <p class="text-ht-muted text-base">Support development. Source hardware yourself or buy a convenience kit.</p>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-ht-border">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <p class="section-label mb-2">Kits and Parts</p>
+        <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text">Support development.</h2>
+        <p class="text-ht-muted text-base mt-1">Source hardware yourself or buy a convenience kit.</p>
+      </div>
+      <a href="/shop" class="hidden sm:block text-ht-accent hover:text-ht-accent-hover text-xs font-bold uppercase tracking-widest transition-colors duration-200">View All &rarr;</a>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {products.map((product) => (
-        <div class="card group">
-          <div class="placeholder-img h-52">
-            <span class="placeholder-label">[{product.name}]</span>
+        <a href={product.href} class="card group block">
+          <div class="overflow-hidden aspect-square bg-ht-surface">
+            <img
+              src={product.img}
+              alt={product.name}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
           <div class="p-5">
-            <h3 class="font-dm font-bold text-ht-text text-lg mb-1">{product.name}</h3>
-            <p class="text-ht-accent font-bold text-xl mb-4">{product.price}</p>
-            <button class="btn-primary w-full text-center">Add to Cart</button>
+            <h3 class="font-dm font-bold text-ht-text text-base mb-1">{product.name}</h3>
+            <p class="text-ht-accent font-bold text-lg mb-4">{product.price}</p>
+            <span class="btn-primary w-full text-center block text-xs">Add to Cart</span>
           </div>
-        </div>
+        </a>
       ))}
     </div>
 
-    <div class="mt-10 text-center">
+    <div class="mt-8 text-center sm:hidden">
       <a href="/shop" class="btn-ghost">View All Products</a>
     </div>
   </section>
 
   <!-- SECTION NAV TILES -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-ht-border">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {tiles.map((tile) => (
         <a
           href={tile.href}
-          class="card group block relative overflow-hidden h-52"
+          class="group block relative overflow-hidden h-56 border border-ht-border hover:border-ht-accent/40 transition-colors duration-200"
         >
-          <!-- Background placeholder -->
-          <div class="absolute inset-0 bg-ht-surface group-hover:bg-[#2a2a2a] transition-colors duration-200">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+          <div class="absolute inset-0">
+            <img
+              src={tile.img}
+              alt={tile.label}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/95 via-[#1a1a1a]/40 to-transparent"></div>
           </div>
-          <div class="relative h-full flex flex-col justify-end p-6">
+          <div class="relative h-full flex flex-col justify-end p-5">
             {tile.badge && (
-              <span class="inline-block text-ht-accent text-xs font-bold uppercase tracking-widest mb-2">{tile.badge}</span>
+              <span class="inline-block text-ht-accent text-[10px] font-bold uppercase tracking-widest mb-1.5">{tile.badge}</span>
             )}
             <h3 class="font-dm font-extrabold text-ht-text text-2xl uppercase tracking-widest mb-1">{tile.label}</h3>
-            <p class="text-ht-muted text-sm">{tile.desc}</p>
+            <p class="text-ht-muted/80 text-xs">{tile.desc}</p>
           </div>
         </a>
       ))}
     </div>
   </section>
 
-  <!-- MISSION CALLOUT -->
-  <section class="bg-[#1e1b16] border-y border-ht-border py-16 mt-8">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="section-label mb-6">Our Mission</p>
+  <!-- MISSION STRIP -->
+  <section class="bg-[#1a1714] border-y border-ht-border py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="section-label mb-5">Our Mission</p>
       <p class="text-ht-text text-xl sm:text-2xl font-medium leading-relaxed">
-        Our goal is to design weapon systems you can 3D print with low cost, accessible equipment.
-        Designs are always free.
-        Development is supported when you choose to buy a kit.
+        Our goal is to design weapon systems you can 3D print with low cost and accessible equipment.
+        The designs are always free and available for anyone to use.
+        Decentralized manufacturing for a hitherto centralized industry.
+      </p>
+      <p class="text-ht-muted text-base mt-6 leading-relaxed">
+        Design development is supported when you purchase build kits from us.
+        Kits are a convenience, never a requirement.
+        To maintain the decentralized model, parts can always be sourced elsewhere.
       </p>
     </div>
   </section>

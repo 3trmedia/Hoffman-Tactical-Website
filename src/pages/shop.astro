@@ -1,19 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const categories = ['All', 'Lower Kits', 'ORCA Kits', 'Accessory Kits', 'Parts'];
+const BASE = 'https://hoffmantactical.com/wp-content/uploads';
+
+const categories = ['All', 'AR-15 Kits', 'AR-9 Kits', 'LR-308 Kits', 'Parts'];
 
 const products = [
-  { name: 'SL-15 Lower Kit', category: 'Lower Kits', price: '$89.00' },
-  { name: 'SL-9 Kit', category: 'Lower Kits', price: '$74.00' },
-  { name: 'SL-308 Kit', category: 'Lower Kits', price: '$94.00' },
-  { name: 'ORCA-15 Kit', category: 'ORCA Kits', price: '$82.00' },
-  { name: 'ORCA-15 Hardware Set', category: 'ORCA Kits', price: '$41.00' },
-  { name: 'Trigger Kicker', category: 'Parts', price: '$24.00' },
-  { name: 'Lower Parts Kit', category: 'Parts', price: '$19.00' },
-  { name: 'Accessory Kit', category: 'Accessory Kits', price: '$38.00' },
-  { name: 'Stock Adapter Hardware', category: 'Parts', price: '$16.00' },
-  { name: 'Grip Screw Kit', category: 'Accessory Kits', price: '$8.00' },
+  {
+    name: 'SL-15 Lower Kit',
+    category: 'AR-15 Kits',
+    price: '$89.00',
+    desc: 'Hardware kit for the SL-15. Sourced fasteners, documented assembly.',
+    img: `${BASE}/2023/12/SL15RK-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'SL-15 Combo Kit',
+    category: 'AR-15 Kits',
+    price: '$129.00',
+    desc: 'Full combo hardware set for the SL-15, including extras.',
+    img: `${BASE}/2023/12/SL15CBO-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'SL-9 Ready Kit',
+    category: 'AR-9 Kits',
+    price: '$74.00',
+    desc: 'Ready kit hardware set for the SL-9 AR-9 lower.',
+    img: `${BASE}/2024/02/SL9-RK-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'SL-9 Complete Build',
+    category: 'AR-9 Kits',
+    price: '$119.00',
+    desc: 'Complete build hardware package for the SL-9.',
+    img: `${BASE}/2024/02/SL9-CB-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'SL-308 Kit',
+    category: 'LR-308 Kits',
+    price: '$94.00',
+    desc: 'Hardware kit for the SL-308 large frame lower.',
+    img: `${BASE}/2025/01/SL-308-Product-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'SL-308 Combo Kit',
+    category: 'LR-308 Kits',
+    price: '$149.00',
+    desc: 'Full combo set for the SL-308, all hardware included.',
+    img: `${BASE}/2025/01/SL-308-Combo-Product-Cover-scaled.jpg`,
+    inStock: true,
+  },
+  {
+    name: 'Trigger Kicker',
+    category: 'Parts',
+    price: '$43.00',
+    desc: 'Active reset mechanism. Hardened 4130 steel. Replaces the disconnector in a standard AR-15 FCG.',
+    img: `${BASE}/2026/05/Trigger-Kicker-Product-Cover-scaled.jpg`,
+    inStock: false,
+  },
+  {
+    name: 'Super Safety',
+    category: 'Parts',
+    price: '$34.00',
+    desc: '3D printed active reset safety selector. Ambidextrous, oversized lever.',
+    img: `${BASE}/2025/11/Super-Safety-Product-Cover-scaled.jpg`,
+    inStock: true,
+  },
 ];
 ---
 
@@ -21,21 +77,31 @@ const products = [
 
   <!-- PAGE HEADER -->
   <div class="border-b border-ht-border bg-ht-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
       <p class="section-label mb-3">Kits and Parts</p>
       <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Shop</h1>
-      <p class="text-ht-muted text-lg max-w-xl">Kits are a convenience, never a requirement. All hardware can be sourced independently.</p>
+      <p class="text-ht-muted text-base max-w-lg">Kits are a convenience, never a requirement. All hardware can be sourced independently using the free design documentation.</p>
+    </div>
+  </div>
+
+  <!-- SHIPPING NOTICE -->
+  <div class="bg-ht-surface border-b border-ht-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <p class="text-ht-muted text-xs">
+        <span class="text-ht-accent font-bold uppercase tracking-wider">Shipping restriction:</span>
+        {' '}We do not ship to CA, CT, DC, DE, HI, IL, MA, MD, NJ, NY, OR, RI, or WA.
+      </p>
     </div>
   </div>
 
   <!-- FILTER TABS -->
-  <div class="border-b border-ht-border sticky top-16 z-40 bg-ht-bg">
+  <div class="border-b border-ht-border sticky top-[105px] z-40 bg-ht-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-0 overflow-x-auto" id="filter-tabs">
+      <div class="flex overflow-x-auto" id="filter-tabs">
         {categories.map((cat, i) => (
           <button
             data-filter={cat}
-            class={`flex-shrink-0 px-5 py-4 text-sm font-bold uppercase tracking-wider border-b-2 transition-colors duration-200 ${
+            class={`flex-shrink-0 px-5 py-4 text-xs font-bold uppercase tracking-widest border-b-2 transition-colors duration-200 ${
               i === 0
                 ? 'border-ht-accent text-ht-accent'
                 : 'border-transparent text-ht-muted hover:text-ht-text'
@@ -50,22 +116,47 @@ const products = [
 
   <!-- PRODUCT GRID -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="product-grid">
       {products.map((product) => (
         <div class="card group" data-category={product.category}>
-          <div class="placeholder-img h-52">
-            <span class="placeholder-label">[{product.name}]</span>
+          <div class="relative overflow-hidden aspect-square bg-ht-bg">
+            <img
+              src={product.img}
+              alt={product.name}
+              class={`w-full h-full object-cover object-center transition-transform duration-500 ${product.inStock ? 'group-hover:scale-105' : 'opacity-60'}`}
+            />
+            {!product.inStock && (
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="bg-ht-bg/80 text-ht-muted text-xs font-bold uppercase tracking-widest px-3 py-1.5 border border-ht-border">Out of Stock</span>
+              </div>
+            )}
           </div>
-          <div class="p-5">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="font-dm font-bold text-ht-text text-lg leading-tight">{product.name}</h3>
-              <span class="category-badge flex-shrink-0 ml-2">{product.category}</span>
+          <div class="p-4">
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-dm font-bold text-ht-text text-sm leading-tight">{product.name}</h3>
+              <span class="category-badge flex-shrink-0 text-[10px]">{product.category}</span>
             </div>
-            <p class="text-ht-accent font-bold text-xl mb-4">{product.price}</p>
-            <button class="btn-primary w-full text-center">Add to Cart</button>
+            <p class="text-ht-muted text-xs leading-relaxed mb-3">{product.desc}</p>
+            <p class="text-ht-accent font-bold text-lg mb-3">{product.price}</p>
+            {product.inStock ? (
+              <button class="btn-primary w-full text-center text-xs">Add to Cart</button>
+            ) : (
+              <button class="w-full text-center text-xs border border-ht-border text-ht-muted font-bold uppercase tracking-wider px-6 py-3 cursor-default" disabled>Notify Me</button>
+            )}
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- SOURCING NOTE -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="bg-ht-surface border border-ht-border p-6 sm:p-8">
+      <p class="section-label mb-3">Building Without a Kit</p>
+      <p class="text-ht-muted text-sm leading-relaxed max-w-2xl">
+        Every kit sold here can be sourced on your own using the free design documentation. Kits are packaged as a convenience for builders who prefer to skip sourcing. The design files include full hardware specifications and supplier references.
+      </p>
+      <a href="/designs" class="inline-block mt-4 text-ht-accent hover:text-ht-accent-hover text-xs font-bold uppercase tracking-widest transition-colors duration-200">Browse Free Designs &rarr;</a>
     </div>
   </section>
 

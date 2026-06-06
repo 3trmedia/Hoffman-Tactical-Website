@@ -13,23 +13,20 @@
   * {
     box-sizing: border-box;
   }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }
 
 @layer components {
-  .placeholder-img {
-    @apply w-full bg-ht-surface border border-ht-accent/20 flex items-center justify-center;
-  }
-
-  .placeholder-label {
-    @apply text-ht-muted text-sm font-medium uppercase tracking-widest;
-  }
-
   .btn-primary {
-    @apply bg-ht-accent hover:bg-ht-accent-hover text-ht-bg font-bold uppercase tracking-wider px-6 py-3 transition-colors duration-200 text-sm;
+    @apply bg-ht-accent hover:bg-ht-accent-hover text-ht-bg font-bold uppercase tracking-widest px-6 py-3 transition-colors duration-200 text-xs inline-block;
   }
 
   .btn-ghost {
-    @apply border border-ht-accent text-ht-accent hover:bg-ht-accent hover:text-ht-bg font-bold uppercase tracking-wider px-6 py-3 transition-colors duration-200 text-sm;
+    @apply border border-ht-accent text-ht-accent hover:bg-ht-accent hover:text-ht-bg font-bold uppercase tracking-widest px-6 py-3 transition-colors duration-200 text-xs inline-block;
   }
 
   .card {
@@ -41,14 +38,14 @@
   }
 
   .section-label {
-    @apply text-ht-accent text-xs font-bold uppercase tracking-widest;
+    @apply text-ht-accent text-[11px] font-bold uppercase tracking-widest;
   }
 
   .free-badge {
-    @apply bg-ht-success text-white text-xs font-bold uppercase tracking-wider px-2 py-0.5;
+    @apply bg-ht-success text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5;
   }
 
   .category-badge {
-    @apply bg-ht-border text-ht-muted text-xs font-bold uppercase tracking-wider px-2 py-0.5;
+    @apply bg-ht-border text-ht-muted text-[10px] font-bold uppercase tracking-wider px-2 py-0.5;
   }
 }

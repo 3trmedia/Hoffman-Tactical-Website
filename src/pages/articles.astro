@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const featuredArticle = {
+const BASE = 'https://hoffmantactical.com/wp-content/uploads';
+
+const featured = {
   title: 'Why Decentralized Manufacturing Matters',
-  excerpt: 'The case for distributed, small-scale production of weapon systems -- and what it means for individual builders, community resilience, and the future of the second amendment.',
+  excerpt: 'The case for distributed, small-scale production of weapon systems and what it means for individual builders, community resilience, and the future of the second amendment.',
   date: 'May 12, 2025',
+  img: `${BASE}/2025/03/Ounce-inside-scaled.jpg`,
 };
 
 const articles = [
@@ -12,31 +15,37 @@ const articles = [
     title: 'Getting Started with FDM Printing for Lowers',
     excerpt: 'A practical guide to printer selection, slicer settings, and first-print gotchas specific to printing firearm components.',
     date: 'April 28, 2025',
+    img: `${BASE}/2023/12/IMG_7628.jpg`,
   },
   {
     title: 'Sourcing Hardware: What to Buy and Where',
     excerpt: 'A breakdown of the fasteners, springs, and detents used across all SL-series designs. Where to source them and what to avoid.',
     date: 'April 14, 2025',
+    img: `${BASE}/2024/04/SL-9-Parts-on-Table-Square.jpg`,
   },
   {
     title: 'SL-15 Build Log',
     excerpt: 'Start to finish documentation of a full SL-15 build. Print settings, hardware sourcing, assembly notes, and function check.',
     date: 'March 30, 2025',
+    img: `${BASE}/2023/11/SL-15-Lower-with-PSA-Upper-On-Post.jpg`,
   },
   {
     title: 'Understanding Tolerances in 3D Printed Firearms',
     excerpt: 'Dimensional accuracy, material creep, and why your slicer settings matter more than your printer brand.',
     date: 'March 15, 2025',
+    img: `${BASE}/2023/12/Drying-Nylon_0019-scaled.jpg`,
   },
   {
     title: 'The Trigger Kicker Explained',
-    excerpt: 'What the Trigger Kicker does, why it was designed, and how to install it in any SL-series lower.',
+    excerpt: 'What the Trigger Kicker does, why it was designed, and how to install it in any SL-series lower. Compatibility notes for BCG and hammer types.',
     date: 'March 1, 2025',
+    img: `${BASE}/2026/05/Cover-Trigger-Kicker-Assembly-scaled.jpg`,
   },
   {
     title: 'ORCA-15 First Look',
     excerpt: 'Overview of the ORCA-15 design goals, hardware differences from the SL-15, and early build feedback from the community.',
     date: 'February 14, 2025',
+    img: `${BASE}/2024/10/Orca-V5.X-Render-Square.png`,
   },
 ];
 ---
@@ -44,8 +53,12 @@ const articles = [
 <Layout title="Articles -- Hoffman Tactical" description="Guides, breakdowns, and field notes from the build.">
 
   <!-- PAGE HEADER -->
-  <div class="border-b border-ht-border bg-ht-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="relative overflow-hidden border-b border-ht-border">
+    <div class="absolute inset-0">
+      <img src="https://hoffmantactical.com/wp-content/uploads/2025/03/Ounce-inside-scaled.jpg" alt="" class="w-full h-full object-cover object-center opacity-15" />
+      <div class="absolute inset-0 bg-gradient-to-b from-ht-bg/70 to-ht-bg"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <p class="section-label mb-3">Field Notes</p>
       <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Articles</h1>
       <p class="text-ht-muted text-lg max-w-xl">Guides, breakdowns, and field notes from the build.</p>
@@ -54,19 +67,21 @@ const articles = [
 
   <!-- FEATURED ARTICLE -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="card overflow-hidden">
-      <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div class="placeholder-img h-64 lg:h-auto min-h-64">
-          <span class="placeholder-label">[Featured Article Image]</span>
-        </div>
-        <div class="p-8 lg:p-12 flex flex-col justify-center">
-          <p class="section-label mb-3">Featured</p>
-          <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text mb-4 leading-tight">{featuredArticle.title}</h2>
-          <p class="text-ht-muted text-base leading-relaxed mb-6">{featuredArticle.excerpt}</p>
-          <p class="text-ht-muted text-xs uppercase tracking-widest mb-6">{featuredArticle.date}</p>
-          <div>
-            <a href="#" class="btn-ghost">Read More</a>
-          </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 border border-ht-border overflow-hidden">
+      <div class="overflow-hidden">
+        <img
+          src={featured.img}
+          alt={featured.title}
+          class="w-full h-64 lg:h-full min-h-[340px] object-cover object-center hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div class="p-8 lg:p-12 flex flex-col justify-center bg-ht-surface">
+        <p class="section-label mb-3">Featured</p>
+        <p class="text-ht-muted text-xs uppercase tracking-widest mb-3">{featured.date}</p>
+        <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text mb-4 leading-tight">{featured.title}</h2>
+        <p class="text-ht-muted text-base leading-relaxed mb-6">{featured.excerpt}</p>
+        <div>
+          <a href="https://hoffmantactical.com" target="_blank" rel="noopener noreferrer" class="btn-ghost text-xs">Read More</a>
         </div>
       </div>
     </div>
@@ -74,18 +89,22 @@ const articles = [
 
   <!-- ARTICLE GRID -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-    <h2 class="font-dm font-extrabold text-2xl text-ht-text mb-8">All Articles</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <h2 class="font-dm font-extrabold text-xl text-ht-text mb-8 border-b border-ht-border pb-6">All Articles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {articles.map((article) => (
         <div class="card group">
-          <div class="placeholder-img h-44">
-            <span class="placeholder-label">[Article Image]</span>
+          <div class="overflow-hidden h-44">
+            <img
+              src={article.img}
+              alt={article.title}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
           <div class="p-5">
             <p class="text-ht-muted text-xs uppercase tracking-widest mb-3">{article.date}</p>
-            <h3 class="font-dm font-bold text-ht-text text-lg leading-tight mb-3">{article.title}</h3>
+            <h3 class="font-dm font-bold text-ht-text text-base leading-tight mb-3">{article.title}</h3>
             <p class="text-ht-muted text-sm leading-relaxed mb-4">{article.excerpt}</p>
-            <a href="#" class="text-ht-accent hover:text-ht-accent-hover text-sm font-bold uppercase tracking-wider transition-colors duration-200">Read More &rarr;</a>
+            <a href="https://hoffmantactical.com" target="_blank" rel="noopener noreferrer" class="text-ht-accent hover:text-ht-accent-hover text-xs font-bold uppercase tracking-wider transition-colors duration-200">Read More &rarr;</a>
           </div>
         </div>
       ))}

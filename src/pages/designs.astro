@@ -1,28 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const featuredDesign = {
+const BASE = 'https://hoffmantactical.com/wp-content/uploads';
+
+const featured = {
   name: 'SL-15',
-  description: 'Full lower receiver for AR-15 pattern rifles. Printable on any FDM machine with a 200x200mm bed. Designed for widely available hardware. Documented assembly with no proprietary tools.',
+  subtitle: '3D Printed AR-15 Lower',
+  description: 'The original Hoffman Tactical design. A full lower receiver for AR-15 pattern rifles, printable on any FDM machine with a 200x200mm bed. Designed around widely available mil-spec hardware. Detailed assembly documentation included.',
+  img: `${BASE}/2023/12/Render.png`,
+  renderImg: `${BASE}/2023/11/SL-15-Lower-with-PSA-Upper-On-Post.jpg`,
 };
 
 const designs = [
-  { name: 'SL-9', desc: '9mm AR-pattern lower receiver. Compatible with Glock-style magazines.' },
-  { name: 'SL-308', desc: 'Large frame lower for .308/7.62 NATO. Extended hardware spec included.' },
-  { name: 'ORCA-15', desc: 'Pistol lower variant with integrated grip geometry. Compact and printable.' },
-  { name: 'Stock System', desc: 'Modular buffer tube compatible stock adapter and fixed stock option.' },
-  { name: 'Grip System', desc: 'Drop-in pistol grip replacement with improved ergonomics and print orientation.' },
-  { name: 'Hose Clamp Cover', desc: 'Decorative and functional barrel nut cover using off-the-shelf hose clamps.' },
-  { name: 'SL15-DR', desc: 'Dual-rail lower variant. Extended picatinny interface at the trigger guard.' },
-  { name: 'Super Safety', desc: 'Oversized ambidextrous safety selector compatible with standard AR-15 lowers.' },
+  {
+    name: 'SL-9',
+    subtitle: '3D Printed AR-9 Lower',
+    desc: 'AR-9 pattern lower for 9mm Glock-style magazine compatibility. Slim profile, designed for standard AR-9 hardware.',
+    img: `${BASE}/2024/02/SL-9-Rendering-Square.jpg`,
+  },
+  {
+    name: 'SL-308',
+    subtitle: '3D Printed LR-308 Lower',
+    desc: 'Large frame lower for .308 / 7.62 NATO. Extended hardware spec included. Compatible with standard LR-308 components.',
+    img: `${BASE}/2025/01/Render.png`,
+  },
+  {
+    name: 'ORCA-15',
+    subtitle: 'Mostly 3D Printed AR-15',
+    desc: 'An AR-15 pattern design with a higher percentage of printable components. Designed for compact builds.',
+    img: `${BASE}/2024/10/Orca-V5.X-Render-Square.png`,
+  },
+  {
+    name: 'SL15-DR',
+    subtitle: 'Double Rib AR-15 Lower',
+    desc: 'A reinforced variant of the SL-15 with dual vertical ribs at the trigger guard for added rigidity.',
+    img: `${BASE}/2023/12/Rendering.png`,
+  },
+  {
+    name: 'Stock System',
+    subtitle: 'Printable Stock Adapter',
+    desc: 'A modular buffer tube compatible stock adapter. Fixed and folding configurations documented.',
+    img: `${BASE}/2023/12/Rendering-1.png`,
+  },
+  {
+    name: 'Super Safety',
+    subtitle: '3D Printed Active Reset Safety',
+    desc: 'Oversized ambidextrous safety selector with active trigger reset mechanism. Compatible with standard AR-15 lowers.',
+    img: `${BASE}/2025/11/Super-Safety-Cover-C-scaled.jpg`,
+  },
+  {
+    name: 'Grip System',
+    subtitle: 'Drop-In Pistol Grip',
+    desc: 'Drop-in pistol grip replacement with improved print orientation and ergonomics. Standard AR-15 pattern.',
+    img: `${BASE}/2024/04/Rendering-scaled.jpg`,
+  },
+  {
+    name: 'Hose Clamp Cover',
+    subtitle: 'Barrel Nut Cover',
+    desc: 'Decorative and functional cover using off-the-shelf hose clamps. Cheap, simple, and no machining required.',
+    img: `${BASE}/2024/04/SL-9-Parts-on-Table-Square.jpg`,
+  },
 ];
 ---
 
 <Layout title="Designs -- Hoffman Tactical" description="All released designs are free to download. Click any design for documentation and file links.">
 
   <!-- PAGE HEADER -->
-  <div class="border-b border-ht-border bg-ht-bg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="relative overflow-hidden border-b border-ht-border">
+    <div class="absolute inset-0">
+      <img src="https://hoffmantactical.com/wp-content/uploads/2024/04/Rendering-scaled.jpg" alt="" class="w-full h-full object-cover object-center opacity-20" />
+      <div class="absolute inset-0 bg-gradient-to-b from-ht-bg/60 to-ht-bg"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <p class="section-label mb-3">Free Downloads</p>
       <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Designs</h1>
       <p class="text-ht-muted text-lg max-w-xl">All released designs are free to download. Click any design for documentation and file links.</p>
@@ -31,24 +80,25 @@ const designs = [
 
   <!-- FEATURED DESIGN -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="card p-0 overflow-hidden">
-      <div class="grid grid-cols-1 lg:grid-cols-2">
-        <!-- Render image -->
-        <div class="placeholder-img h-72 lg:h-auto min-h-72">
-          <span class="placeholder-label">[SL-15 Render]</span>
+    <div class="grid grid-cols-1 lg:grid-cols-2 border border-ht-border overflow-hidden">
+      <div class="overflow-hidden">
+        <img
+          src={featured.renderImg}
+          alt={featured.name}
+          class="w-full h-80 lg:h-full min-h-[400px] object-cover object-center hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div class="p-8 lg:p-12 flex flex-col justify-center bg-ht-surface">
+        <div class="flex items-center gap-3 mb-4">
+          <p class="section-label">Featured Design</p>
+          <span class="free-badge">FREE</span>
         </div>
-
-        <!-- Info -->
-        <div class="p-8 lg:p-12 flex flex-col justify-center">
-          <div class="flex items-center gap-3 mb-4">
-            <p class="section-label">Featured Design</p>
-            <span class="free-badge">FREE</span>
-          </div>
-          <h2 class="font-dm font-extrabold text-4xl sm:text-5xl text-ht-text mb-4">{featuredDesign.name}</h2>
-          <p class="text-ht-muted text-base leading-relaxed mb-8">{featuredDesign.description}</p>
-          <div>
-            <a href="#" class="btn-ghost">Download Files</a>
-          </div>
+        <h2 class="font-dm font-extrabold text-4xl sm:text-5xl text-ht-text mb-1">{featured.name}</h2>
+        <p class="text-ht-muted text-sm uppercase tracking-widest mb-4">{featured.subtitle}</p>
+        <p class="text-ht-muted text-base leading-relaxed mb-8">{featured.description}</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://hoffmantactical.com/designs/sl-15/" target="_blank" rel="noopener noreferrer" class="btn-ghost">Download Files</a>
+          <a href="/shop" class="text-ht-muted hover:text-ht-accent text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1">Buy Kit &rarr;</a>
         </div>
       </div>
     </div>
@@ -56,20 +106,25 @@ const designs = [
 
   <!-- DESIGN GRID -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-    <h2 class="font-dm font-extrabold text-2xl text-ht-text mb-8">All Designs</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <h2 class="font-dm font-extrabold text-2xl text-ht-text mb-8 border-b border-ht-border pb-6">All Designs</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       {designs.map((design) => (
         <div class="card group">
-          <div class="placeholder-img h-48">
-            <span class="placeholder-label">[{design.name} Render]</span>
+          <div class="overflow-hidden aspect-square bg-ht-bg">
+            <img
+              src={design.img}
+              alt={design.name}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
           <div class="p-5">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="font-dm font-bold text-ht-text text-lg">{design.name}</h3>
-              <span class="free-badge">FREE</span>
+            <div class="flex items-start justify-between gap-2 mb-1">
+              <h3 class="font-dm font-bold text-ht-text text-base">{design.name}</h3>
+              <span class="free-badge flex-shrink-0">FREE</span>
             </div>
+            <p class="text-ht-muted text-xs uppercase tracking-wider mb-3">{design.subtitle}</p>
             <p class="text-ht-muted text-sm leading-relaxed mb-4">{design.desc}</p>
-            <a href="#" class="btn-ghost w-full text-center block">View Design</a>
+            <a href={`https://hoffmantactical.com/designs/${design.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`} target="_blank" rel="noopener noreferrer" class="btn-ghost w-full text-center block text-xs">View Design</a>
           </div>
         </div>
       ))}
