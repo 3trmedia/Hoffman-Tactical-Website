@@ -15,13 +15,11 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Designs', href: '/designs' },
   { label: 'Shop', href: '/shop' },
-  { label: 'Learn', href: '/learn' },
-  { label: 'Forum', href: 'https://forum.hoffmantactical.com', external: true },
-  { label: 'Articles', href: '/articles' },
+  { label: 'Files', href: '/files' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Community', href: 'https://forum.hoffmantactical.com', external: true },
   { label: 'Contact', href: '/contact' },
-  { label: 'Subscribe', href: '/subscribe' },
 ];
 
 function isActive(href: string): boolean {
@@ -181,8 +179,14 @@ function isActive(href: string): boolean {
           <div>
             <p class="text-ht-text text-xs font-bold uppercase tracking-widest mb-4">Navigate</p>
             <ul class="space-y-2.5">
-              {['Designs', 'Shop', 'Learn', 'Articles', 'Contact', 'Subscribe'].map(l => (
-                <li><a href={`/${l.toLowerCase()}`} class="text-ht-muted hover:text-ht-accent text-sm transition-colors duration-200">{l}</a></li>
+              {[
+                { label: 'Shop', href: '/shop' },
+                { label: 'Files', href: '/files' },
+                { label: 'Guides', href: '/guides' },
+                { label: 'Community', href: 'https://forum.hoffmantactical.com' },
+                { label: 'Contact', href: '/contact' },
+              ].map(l => (
+                <li><a href={l.href} class="text-ht-muted hover:text-ht-accent text-sm transition-colors duration-200">{l.label}</a></li>
               ))}
             </ul>
           </div>

@@ -7,7 +7,6 @@ const featured = {
   name: 'SL-15',
   subtitle: '3D Printed AR-15 Lower',
   description: 'The original Hoffman Tactical design. A full lower receiver for AR-15 pattern rifles, printable on any FDM machine with a 200x200mm bed. Designed around widely available mil-spec hardware. Detailed assembly documentation included.',
-  img: `${BASE}/2023/12/Render.png`,
   renderImg: `${BASE}/2023/11/SL-15-Lower-with-PSA-Upper-On-Post.jpg`,
 };
 
@@ -17,53 +16,61 @@ const designs = [
     subtitle: '3D Printed AR-9 Lower',
     desc: 'AR-9 pattern lower for 9mm Glock-style magazine compatibility. Slim profile, designed for standard AR-9 hardware.',
     img: `${BASE}/2024/02/SL-9-Rendering-Square.jpg`,
+    slug: 'sl-9',
   },
   {
     name: 'SL-308',
     subtitle: '3D Printed LR-308 Lower',
     desc: 'Large frame lower for .308 / 7.62 NATO. Extended hardware spec included. Compatible with standard LR-308 components.',
     img: `${BASE}/2025/01/Render.png`,
+    slug: 'sl-308',
   },
   {
     name: 'ORCA-15',
     subtitle: 'Mostly 3D Printed AR-15',
     desc: 'An AR-15 pattern design with a higher percentage of printable components. Designed for compact builds.',
     img: `${BASE}/2024/10/Orca-V5.X-Render-Square.png`,
+    slug: 'orca-15',
   },
   {
     name: 'SL15-DR',
     subtitle: 'Double Rib AR-15 Lower',
     desc: 'A reinforced variant of the SL-15 with dual vertical ribs at the trigger guard for added rigidity.',
     img: `${BASE}/2023/12/Rendering.png`,
+    slug: 'sl15-dr',
   },
   {
     name: 'Stock System',
     subtitle: 'Printable Stock Adapter',
     desc: 'A modular buffer tube compatible stock adapter. Fixed and folding configurations documented.',
     img: `${BASE}/2023/12/Rendering-1.png`,
+    slug: 'stock-system',
   },
   {
     name: 'Super Safety',
     subtitle: '3D Printed Active Reset Safety',
     desc: 'Oversized ambidextrous safety selector with active trigger reset mechanism. Compatible with standard AR-15 lowers.',
     img: `${BASE}/2025/11/Super-Safety-Cover-C-scaled.jpg`,
+    slug: 'super-safety',
   },
   {
     name: 'Grip System',
     subtitle: 'Drop-In Pistol Grip',
     desc: 'Drop-in pistol grip replacement with improved print orientation and ergonomics. Standard AR-15 pattern.',
     img: `${BASE}/2024/04/Rendering-scaled.jpg`,
+    slug: 'grip-system',
   },
   {
     name: 'Hose Clamp Cover',
     subtitle: 'Barrel Nut Cover',
-    desc: 'Decorative and functional cover using off-the-shelf hose clamps. Cheap, simple, and no machining required.',
+    desc: 'Decorative and functional cover using off-the-shelf hose clamps. Cheap, simple, no machining required.',
     img: `${BASE}/2024/04/SL-9-Parts-on-Table-Square.jpg`,
+    slug: 'hose-clamp-cover',
   },
 ];
 ---
 
-<Layout title="Designs -- Hoffman Tactical" description="All released designs are free to download. Click any design for documentation and file links.">
+<Layout title="Files -- Hoffman Tactical" description="All released designs are free to download. Click any design for documentation and file links.">
 
   <!-- PAGE HEADER -->
   <div class="relative overflow-hidden border-b border-ht-border">
@@ -73,7 +80,7 @@ const designs = [
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <p class="section-label mb-3">Free Downloads</p>
-      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Designs</h1>
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Files</h1>
       <p class="text-ht-muted text-lg max-w-xl">All released designs are free to download. Click any design for documentation and file links.</p>
     </div>
   </div>
@@ -98,7 +105,7 @@ const designs = [
         <p class="text-ht-muted text-base leading-relaxed mb-8">{featured.description}</p>
         <div class="flex flex-wrap gap-3">
           <a href="https://hoffmantactical.com/designs/sl-15/" target="_blank" rel="noopener noreferrer" class="btn-ghost">Download Files</a>
-          <a href="/shop" class="text-ht-muted hover:text-ht-accent text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1">Buy Kit &rarr;</a>
+          <a href="/shop" class="text-ht-muted hover:text-ht-accent text-xs font-bold uppercase tracking-widest transition-colors duration-200 flex items-center gap-1 self-center">Buy Kit &rarr;</a>
         </div>
       </div>
     </div>
@@ -124,7 +131,12 @@ const designs = [
             </div>
             <p class="text-ht-muted text-xs uppercase tracking-wider mb-3">{design.subtitle}</p>
             <p class="text-ht-muted text-sm leading-relaxed mb-4">{design.desc}</p>
-            <a href={`https://hoffmantactical.com/designs/${design.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`} target="_blank" rel="noopener noreferrer" class="btn-ghost w-full text-center block text-xs">View Design</a>
+            <a
+              href={`https://hoffmantactical.com/designs/${design.slug}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-ghost w-full text-center block text-xs"
+            >View Design</a>
           </div>
         </div>
       ))}

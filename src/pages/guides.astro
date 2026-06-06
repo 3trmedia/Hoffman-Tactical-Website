@@ -3,6 +3,16 @@ import Layout from '../layouts/Layout.astro';
 
 const BASE = 'https://hoffmantactical.com/wp-content/uploads';
 
+const learnSections = [
+  { label: 'How To Build', href: 'https://hoffmantactical.com/learn/', external: true },
+  { label: 'Printers', href: 'https://hoffmantactical.com/learn/', external: true },
+  { label: 'Filament', href: 'https://hoffmantactical.com/learn/', external: true },
+  { label: 'Q and A', href: 'https://hoffmantactical.com/learn/', external: true },
+  { label: 'History', href: 'https://hoffmantactical.com/learn/', external: true },
+  { label: 'Design Files', href: '/files' },
+  { label: 'Community', href: 'https://forum.hoffmantactical.com', external: true },
+];
+
 const featured = {
   title: 'Why Decentralized Manufacturing Matters',
   excerpt: 'The case for distributed, small-scale production of weapon systems and what it means for individual builders, community resilience, and the future of the second amendment.',
@@ -50,7 +60,7 @@ const articles = [
 ];
 ---
 
-<Layout title="Articles -- Hoffman Tactical" description="Guides, breakdowns, and field notes from the build.">
+<Layout title="Guides -- Hoffman Tactical" description="Build guides, technical breakdowns, and field notes for 3D printed weapon systems.">
 
   <!-- PAGE HEADER -->
   <div class="relative overflow-hidden border-b border-ht-border">
@@ -59,9 +69,28 @@ const articles = [
       <div class="absolute inset-0 bg-gradient-to-b from-ht-bg/70 to-ht-bg"></div>
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <p class="section-label mb-3">Field Notes</p>
-      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Articles</h1>
-      <p class="text-ht-muted text-lg max-w-xl">Guides, breakdowns, and field notes from the build.</p>
+      <p class="section-label mb-3">Build Knowledge</p>
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Guides</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Build guides, technical breakdowns, and field notes. Browse by topic or scroll through all articles.</p>
+    </div>
+  </div>
+
+  <!-- LEARN SECTION BUTTONS -->
+  <div class="border-b border-ht-border bg-ht-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-ht-muted text-xs font-bold uppercase tracking-widest mr-2">Topics:</span>
+        {learnSections.map((section) => (
+          <a
+            href={section.href}
+            target={section.external ? '_blank' : undefined}
+            rel={section.external ? 'noopener noreferrer' : undefined}
+            class="border border-ht-border text-ht-muted hover:border-ht-accent hover:text-ht-accent text-xs font-bold uppercase tracking-wider px-4 py-2 transition-colors duration-200"
+          >
+            {section.label}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 
