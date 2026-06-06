@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #1C1C1C;
+    color: #F0EDE6;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .placeholder-img {
+    @apply w-full bg-ht-surface border border-ht-accent/20 flex items-center justify-center;
+  }
+
+  .placeholder-label {
+    @apply text-ht-muted text-sm font-medium uppercase tracking-widest;
+  }
+
+  .btn-primary {
+    @apply bg-ht-accent hover:bg-ht-accent-hover text-ht-bg font-bold uppercase tracking-wider px-6 py-3 transition-colors duration-200 text-sm;
+  }
+
+  .btn-ghost {
+    @apply border border-ht-accent text-ht-accent hover:bg-ht-accent hover:text-ht-bg font-bold uppercase tracking-wider px-6 py-3 transition-colors duration-200 text-sm;
+  }
+
+  .card {
+    @apply bg-ht-surface border border-ht-border transition-colors duration-200;
+  }
+
+  .card:hover {
+    @apply border-ht-accent/40;
+  }
+
+  .section-label {
+    @apply text-ht-accent text-xs font-bold uppercase tracking-widest;
+  }
+
+  .free-badge {
+    @apply bg-ht-success text-white text-xs font-bold uppercase tracking-wider px-2 py-0.5;
+  }
+
+  .category-badge {
+    @apply bg-ht-border text-ht-muted text-xs font-bold uppercase tracking-wider px-2 py-0.5;
+  }
+}

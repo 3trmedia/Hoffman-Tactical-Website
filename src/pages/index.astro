@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  { name: 'SL-9 Kit', price: '$74.00' },
+  { name: 'SL-308 Kit', price: '$94.00' },
+  { name: 'ORCA-15 Kit', price: '$82.00' },
+  { name: 'Trigger Kicker', price: '$24.00' },
+  { name: 'Accessory Kit', price: '$38.00' },
+  { name: 'Lower Parts', price: '$19.00' },
+];
+
+const tiles = [
+  {
+    label: 'Designs',
+    badge: 'Always free.',
+    desc: 'Every design we release, at no cost.',
+    href: '/designs',
+  },
+  {
+    label: 'Learn',
+    badge: null,
+    desc: 'Guides for printing, sourcing, and building.',
+    href: '/learn',
+  },
+  {
+    label: 'Articles',
+    badge: null,
+    desc: 'Build logs, breakdowns, and field notes.',
+    href: '/articles',
+  },
+  {
+    label: 'Forum',
+    badge: null,
+    desc: 'Community questions and project threads.',
+    href: '#forum-external',
+  },
+];
+---
+
+<Layout title="Hoffman Tactical -- Build It Yourself" description="Free 3D-printable weapon system designs and build kits. Decentralized manufacturing.">
+
+  <!-- HERO -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+    <!-- Background placeholder -->
+    <div class="absolute inset-0 bg-[#111111]">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#111]/80 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center justify-end opacity-10">
+        <div class="w-full h-full placeholder-img">
+          <span class="placeholder-label">[Hero Product Photo]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="max-w-2xl">
+        <p class="section-label mb-4">Hoffman Tactical</p>
+        <h1 class="font-dm font-extrabold text-6xl sm:text-7xl lg:text-8xl text-ht-text leading-none tracking-tight mb-6">
+          Build It<br />Yourself.
+        </h1>
+        <p class="text-ht-muted text-xl sm:text-2xl font-medium mb-10 leading-relaxed">
+          Free designs. Real kits. Decentralized manufacturing.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/shop" class="btn-primary">Shop Kits</a>
+          <a href="/designs" class="btn-ghost">Free Designs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLAGSHIP PRODUCT -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image -->
+      <div class="placeholder-img h-80 lg:h-96">
+        <span class="placeholder-label">[SL-15 Product Photo]</span>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <p class="section-label mb-3">Featured Kit</p>
+        <h2 class="font-dm font-extrabold text-4xl sm:text-5xl text-ht-text leading-tight mb-4">SL-15 Lower Kit</h2>
+        <p class="text-ht-muted text-lg leading-relaxed mb-6">
+          Everything you need to build the SL-15 lower. Sourced hardware, documented assembly, no proprietary tools required.
+        </p>
+        <div class="flex items-center gap-4 mb-8">
+          <span class="text-ht-text font-bold text-3xl">$89.00</span>
+          <span class="text-ht-muted text-sm">Design files are always free</span>
+        </div>
+        <button class="btn-primary">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-10">
+      <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text mb-3">Kits and Parts</h2>
+      <p class="text-ht-muted text-base">Support development. Source hardware yourself or buy a convenience kit.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {products.map((product) => (
+        <div class="card group">
+          <div class="placeholder-img h-52">
+            <span class="placeholder-label">[{product.name}]</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-dm font-bold text-ht-text text-lg mb-1">{product.name}</h3>
+            <p class="text-ht-accent font-bold text-xl mb-4">{product.price}</p>
+            <button class="btn-primary w-full text-center">Add to Cart</button>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/shop" class="btn-ghost">View All Products</a>
+    </div>
+  </section>
+
+  <!-- SECTION NAV TILES -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {tiles.map((tile) => (
+        <a
+          href={tile.href}
+          class="card group block relative overflow-hidden h-52"
+        >
+          <!-- Background placeholder -->
+          <div class="absolute inset-0 bg-ht-surface group-hover:bg-[#2a2a2a] transition-colors duration-200">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+          </div>
+          <div class="relative h-full flex flex-col justify-end p-6">
+            {tile.badge && (
+              <span class="inline-block text-ht-accent text-xs font-bold uppercase tracking-widest mb-2">{tile.badge}</span>
+            )}
+            <h3 class="font-dm font-extrabold text-ht-text text-2xl uppercase tracking-widest mb-1">{tile.label}</h3>
+            <p class="text-ht-muted text-sm">{tile.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- MISSION CALLOUT -->
+  <section class="bg-[#1e1b16] border-y border-ht-border py-16 mt-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="section-label mb-6">Our Mission</p>
+      <p class="text-ht-text text-xl sm:text-2xl font-medium leading-relaxed">
+        Our goal is to design weapon systems you can 3D print with low cost, accessible equipment.
+        Designs are always free.
+        Development is supported when you choose to buy a kit.
+      </p>
+    </div>
+  </section>
+
+</Layout>

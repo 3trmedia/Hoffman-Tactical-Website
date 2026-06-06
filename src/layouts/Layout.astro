@@ -1,0 +1,211 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Hoffman Tactical',
+  description = 'Free 3D-printable weapon system designs and build kits. Decentralized manufacturing.',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Designs', href: '/designs' },
+  { label: 'Shop', href: '/shop' },
+  { label: 'Learn', href: '/learn' },
+  { label: 'Forum', href: '#forum-external', external: true },
+  { label: 'Articles', href: '/articles' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Subscribe', href: '/subscribe' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-ht-bg text-ht-text font-dm antialiased">
+
+    <!-- NAV -->
+    <nav id="main-nav" class="sticky top-0 z-50 bg-[#1a1a1a] border-b border-ht-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+
+          <!-- Logo -->
+          <a href="/" class="flex-shrink-0">
+            <span class="font-dm font-extrabold text-ht-text text-lg tracking-widest uppercase leading-none">HOFFMAN TACTICAL</span>
+            <span class="block text-ht-muted text-[10px] tracking-wider uppercase font-medium mt-0.5">Free designs. Real kits.</span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                class={`px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors duration-200 ${
+                  isActive(link.href)
+                    ? 'text-ht-accent'
+                    : 'text-ht-muted hover:text-ht-text'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <!-- Cart -->
+            <a href="/shop" class="relative ml-2 p-2 text-ht-muted hover:text-ht-text transition-colors duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span class="absolute -top-0.5 -right-0.5 bg-ht-accent text-ht-bg text-[9px] font-bold w-4 h-4 flex items-center justify-center leading-none">0</span>
+            </a>
+          </div>
+
+          <!-- Mobile hamburger -->
+          <button
+            id="nav-toggle"
+            class="lg:hidden p-2 text-ht-muted hover:text-ht-text transition-colors duration-200"
+            aria-label="Toggle menu"
+          >
+            <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav Overlay -->
+      <div id="mobile-menu" class="lg:hidden hidden bg-[#1a1a1a] border-t border-ht-border">
+        <div class="px-4 py-4 flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              class={`px-3 py-3 text-base font-medium uppercase tracking-wider transition-colors duration-200 border-b border-ht-border/50 last:border-0 ${
+                isActive(link.href)
+                  ? 'text-ht-accent'
+                  : 'text-ht-muted hover:text-ht-text'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a href="/shop" class="flex items-center gap-2 px-3 py-3 text-ht-muted hover:text-ht-text transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="text-sm uppercase tracking-wider font-medium">Cart (0)</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#161616] border-t border-ht-border mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          <!-- Left: Brand -->
+          <div>
+            <div class="mb-4">
+              <span class="font-dm font-extrabold text-ht-text text-xl tracking-widest uppercase">HOFFMAN TACTICAL</span>
+              <p class="text-ht-muted text-sm mt-1">Free designs. Real kits. Decentralized manufacturing.</p>
+            </div>
+            <p class="text-ht-muted text-sm mt-6">&copy; {new Date().getFullYear()} Hoffman Tactical LLC. All rights reserved.</p>
+            <p class="text-ht-muted text-sm mt-2">PO Box 1776 &bull; Anytown, USA 00000</p>
+          </div>
+
+          <!-- Right: Links + Socials -->
+          <div>
+            <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8">
+              <a href="/shop" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Shop</a>
+              <a href="/shop#cart" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Cart</a>
+              <a href="/contact#returns" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Returns</a>
+              <a href="/contact" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Contact</a>
+              <a href="/designs" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Designs</a>
+            </div>
+
+            <!-- Social icons -->
+            <div class="flex gap-4">
+              <a href="#" aria-label="Twitter / X" class="text-ht-muted hover:text-ht-accent transition-colors duration-200">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" class="text-ht-muted hover:text-ht-accent transition-colors duration-200">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="YouTube" class="text-ht-muted hover:text-ht-accent transition-colors duration-200">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warrant Canary -->
+      <div class="border-t border-ht-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <p class="text-ht-muted text-xs leading-relaxed">
+            As of 5/7/2025, no warrants have been served to HOFFMAN TACTICAL LLC principals or employees. No searches or seizures have been performed on HOFFMAN TACTICAL LLC assets.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const hamburger = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      toggle?.addEventListener('click', () => {
+        const open = !menu?.classList.contains('hidden');
+        if (open) {
+          menu?.classList.add('hidden');
+          hamburger?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        } else {
+          menu?.classList.remove('hidden');
+          hamburger?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

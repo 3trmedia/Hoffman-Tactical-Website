@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact -- Hoffman Tactical" description="Questions, build issues, order problems, or just want to reach out.">
+
+  <!-- PAGE HEADER -->
+  <div class="border-b border-ht-border bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Contact</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Questions, build issues, order problems, or just want to reach out -- use the form below.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <form class="space-y-6">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Name -->
+        <div>
+          <label for="name" class="block text-ht-muted text-xs font-bold uppercase tracking-wider mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            class="w-full bg-ht-surface border border-ht-border text-ht-text placeholder-ht-muted/50 px-4 py-3 focus:outline-none focus:border-ht-accent transition-colors duration-200 text-sm"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-ht-muted text-xs font-bold uppercase tracking-wider mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your@email.com"
+            class="w-full bg-ht-surface border border-ht-border text-ht-text placeholder-ht-muted/50 px-4 py-3 focus:outline-none focus:border-ht-accent transition-colors duration-200 text-sm"
+          />
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <div>
+        <label for="subject" class="block text-ht-muted text-xs font-bold uppercase tracking-wider mb-2">Subject</label>
+        <select
+          id="subject"
+          name="subject"
+          class="w-full bg-ht-surface border border-ht-border text-ht-text px-4 py-3 focus:outline-none focus:border-ht-accent transition-colors duration-200 text-sm appearance-none"
+        >
+          <option value="" disabled selected class="text-ht-muted">Select a subject</option>
+          <option value="order">Order Issue</option>
+          <option value="build">Build Question</option>
+          <option value="design">Design Feedback</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="message" class="block text-ht-muted text-xs font-bold uppercase tracking-wider mb-2">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="7"
+          placeholder="Your message..."
+          class="w-full bg-ht-surface border border-ht-border text-ht-text placeholder-ht-muted/50 px-4 py-3 focus:outline-none focus:border-ht-accent transition-colors duration-200 text-sm resize-none"
+        ></textarea>
+      </div>
+
+      <div>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </div>
+    </form>
+
+    <!-- Address + Socials -->
+    <div class="mt-16 pt-10 border-t border-ht-border">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <p class="section-label mb-3">Mailing Address</p>
+          <p class="text-ht-text font-medium">Hoffman Tactical LLC</p>
+          <p class="text-ht-muted text-sm mt-1">PO Box 1776</p>
+          <p class="text-ht-muted text-sm">Anytown, USA 00000</p>
+          <p class="text-ht-muted text-sm mt-3">Response time: 2-5 business days</p>
+        </div>
+
+        <div>
+          <p class="section-label mb-3">Social</p>
+          <div class="flex flex-col gap-2">
+            <a href="#" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Twitter / X</a>
+            <a href="#" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">Instagram</a>
+            <a href="#" class="text-ht-muted hover:text-ht-accent text-sm uppercase tracking-wider font-medium transition-colors duration-200">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Returns anchor -->
+    <div id="returns" class="mt-16 pt-10 border-t border-ht-border">
+      <p class="section-label mb-3">Returns</p>
+      <p class="text-ht-muted text-sm leading-relaxed">
+        If there is an issue with your order, reach out using the form above and select "Order Issue" as the subject.
+        Include your order number and a description of the problem.
+        Unopened kits can be returned within 30 days.
+      </p>
+    </div>
+  </section>
+
+</Layout>

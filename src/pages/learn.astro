@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tiles = [
+  { label: 'How', desc: 'Overview of the build process from start to finish.', href: '#how' },
+  { label: 'Printers', desc: 'Recommended printers and minimum specs for lowers.', href: '#printers' },
+  { label: 'Filament', desc: 'Material selection, brands, and print profiles.', href: '#filament' },
+  { label: 'Contact', desc: 'Reach out with a specific build question.', href: '/contact' },
+  { label: 'Designs', desc: 'Browse and download all released design files.', href: '/designs' },
+  { label: 'Q and A', desc: 'Common questions answered from the community.', href: '#qa' },
+  { label: 'History', desc: 'How Hoffman Tactical started and where it is headed.', href: '#history' },
+  { label: 'Forum', desc: 'Community build threads and project discussion.', href: '#forum-external' },
+  { label: 'Articles', desc: 'Long-form guides, build logs, and breakdowns.', href: '/articles' },
+];
+---
+
+<Layout title="Learn -- Hoffman Tactical" description="Guides and information for building your own weapon systems. 3D printing, assembly, sourcing, and more.">
+
+  <!-- PAGE HEADER -->
+  <div class="border-b border-ht-border bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <p class="section-label mb-3">Resources</p>
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Learn</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Guides and information for building your own weapon systems. 3D printing, assembly, sourcing, and more.</p>
+    </div>
+  </div>
+
+  <!-- TILE GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tiles.map((tile) => (
+        <a
+          href={tile.href}
+          class="card group block relative overflow-hidden h-48"
+        >
+          <div class="absolute inset-0 bg-ht-surface group-hover:bg-[#2a2a2a] transition-colors duration-200">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 to-transparent"></div>
+          </div>
+          <!-- Image placeholder behind content -->
+          <div class="absolute inset-0 opacity-5 flex items-center justify-center">
+            <span class="text-ht-muted text-xs uppercase tracking-widest">[Image]</span>
+          </div>
+          <div class="relative h-full flex flex-col justify-end p-6">
+            <h3 class="font-dm font-extrabold text-ht-text text-2xl uppercase tracking-widest mb-1 group-hover:text-ht-accent transition-colors duration-200">
+              {tile.label}
+            </h3>
+            <p class="text-ht-muted text-sm">{tile.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const featuredArticle = {
+  title: 'Why Decentralized Manufacturing Matters',
+  excerpt: 'The case for distributed, small-scale production of weapon systems -- and what it means for individual builders, community resilience, and the future of the second amendment.',
+  date: 'May 12, 2025',
+};
+
+const articles = [
+  {
+    title: 'Getting Started with FDM Printing for Lowers',
+    excerpt: 'A practical guide to printer selection, slicer settings, and first-print gotchas specific to printing firearm components.',
+    date: 'April 28, 2025',
+  },
+  {
+    title: 'Sourcing Hardware: What to Buy and Where',
+    excerpt: 'A breakdown of the fasteners, springs, and detents used across all SL-series designs. Where to source them and what to avoid.',
+    date: 'April 14, 2025',
+  },
+  {
+    title: 'SL-15 Build Log',
+    excerpt: 'Start to finish documentation of a full SL-15 build. Print settings, hardware sourcing, assembly notes, and function check.',
+    date: 'March 30, 2025',
+  },
+  {
+    title: 'Understanding Tolerances in 3D Printed Firearms',
+    excerpt: 'Dimensional accuracy, material creep, and why your slicer settings matter more than your printer brand.',
+    date: 'March 15, 2025',
+  },
+  {
+    title: 'The Trigger Kicker Explained',
+    excerpt: 'What the Trigger Kicker does, why it was designed, and how to install it in any SL-series lower.',
+    date: 'March 1, 2025',
+  },
+  {
+    title: 'ORCA-15 First Look',
+    excerpt: 'Overview of the ORCA-15 design goals, hardware differences from the SL-15, and early build feedback from the community.',
+    date: 'February 14, 2025',
+  },
+];
+---
+
+<Layout title="Articles -- Hoffman Tactical" description="Guides, breakdowns, and field notes from the build.">
+
+  <!-- PAGE HEADER -->
+  <div class="border-b border-ht-border bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <p class="section-label mb-3">Field Notes</p>
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Articles</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Guides, breakdowns, and field notes from the build.</p>
+    </div>
+  </div>
+
+  <!-- FEATURED ARTICLE -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="card overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="placeholder-img h-64 lg:h-auto min-h-64">
+          <span class="placeholder-label">[Featured Article Image]</span>
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-center">
+          <p class="section-label mb-3">Featured</p>
+          <h2 class="font-dm font-extrabold text-3xl sm:text-4xl text-ht-text mb-4 leading-tight">{featuredArticle.title}</h2>
+          <p class="text-ht-muted text-base leading-relaxed mb-6">{featuredArticle.excerpt}</p>
+          <p class="text-ht-muted text-xs uppercase tracking-widest mb-6">{featuredArticle.date}</p>
+          <div>
+            <a href="#" class="btn-ghost">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <h2 class="font-dm font-extrabold text-2xl text-ht-text mb-8">All Articles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {articles.map((article) => (
+        <div class="card group">
+          <div class="placeholder-img h-44">
+            <span class="placeholder-label">[Article Image]</span>
+          </div>
+          <div class="p-5">
+            <p class="text-ht-muted text-xs uppercase tracking-widest mb-3">{article.date}</p>
+            <h3 class="font-dm font-bold text-ht-text text-lg leading-tight mb-3">{article.title}</h3>
+            <p class="text-ht-muted text-sm leading-relaxed mb-4">{article.excerpt}</p>
+            <a href="#" class="text-ht-accent hover:text-ht-accent-hover text-sm font-bold uppercase tracking-wider transition-colors duration-200">Read More &rarr;</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>

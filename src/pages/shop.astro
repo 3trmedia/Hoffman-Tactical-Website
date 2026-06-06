@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = ['All', 'Lower Kits', 'ORCA Kits', 'Accessory Kits', 'Parts'];
+
+const products = [
+  { name: 'SL-15 Lower Kit', category: 'Lower Kits', price: '$89.00' },
+  { name: 'SL-9 Kit', category: 'Lower Kits', price: '$74.00' },
+  { name: 'SL-308 Kit', category: 'Lower Kits', price: '$94.00' },
+  { name: 'ORCA-15 Kit', category: 'ORCA Kits', price: '$82.00' },
+  { name: 'ORCA-15 Hardware Set', category: 'ORCA Kits', price: '$41.00' },
+  { name: 'Trigger Kicker', category: 'Parts', price: '$24.00' },
+  { name: 'Lower Parts Kit', category: 'Parts', price: '$19.00' },
+  { name: 'Accessory Kit', category: 'Accessory Kits', price: '$38.00' },
+  { name: 'Stock Adapter Hardware', category: 'Parts', price: '$16.00' },
+  { name: 'Grip Screw Kit', category: 'Accessory Kits', price: '$8.00' },
+];
+---
+
+<Layout title="Shop -- Hoffman Tactical" description="Build kits, hardware sets, and parts. Kits are a convenience, never a requirement.">
+
+  <!-- PAGE HEADER -->
+  <div class="border-b border-ht-border bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <p class="section-label mb-3">Kits and Parts</p>
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Shop</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Kits are a convenience, never a requirement. All hardware can be sourced independently.</p>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="border-b border-ht-border sticky top-16 z-40 bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-0 overflow-x-auto" id="filter-tabs">
+        {categories.map((cat, i) => (
+          <button
+            data-filter={cat}
+            class={`flex-shrink-0 px-5 py-4 text-sm font-bold uppercase tracking-wider border-b-2 transition-colors duration-200 ${
+              i === 0
+                ? 'border-ht-accent text-ht-accent'
+                : 'border-transparent text-ht-muted hover:text-ht-text'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+      {products.map((product) => (
+        <div class="card group" data-category={product.category}>
+          <div class="placeholder-img h-52">
+            <span class="placeholder-label">[{product.name}]</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-dm font-bold text-ht-text text-lg leading-tight">{product.name}</h3>
+              <span class="category-badge flex-shrink-0 ml-2">{product.category}</span>
+            </div>
+            <p class="text-ht-accent font-bold text-xl mb-4">{product.price}</p>
+            <button class="btn-primary w-full text-center">Add to Cart</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-category]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const filter = tab.dataset.filter;
+
+      tabs.forEach((t) => {
+        t.classList.remove('border-ht-accent', 'text-ht-accent');
+        t.classList.add('border-transparent', 'text-ht-muted');
+      });
+      tab.classList.add('border-ht-accent', 'text-ht-accent');
+      tab.classList.remove('border-transparent', 'text-ht-muted');
+
+      cards.forEach((card) => {
+        if (filter === 'All' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

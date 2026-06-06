@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Subscribe -- Hoffman Tactical" description="Get notified when new designs drop, kits go live, or guides get published.">
+
+  <!-- PAGE HEADER -->
+  <div class="border-b border-ht-border bg-ht-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="font-dm font-extrabold text-5xl sm:text-6xl text-ht-text mb-4">Subscribe</h1>
+      <p class="text-ht-muted text-lg max-w-xl">Get notified when new designs drop, kits go live, or guides get published. No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <!-- SUBSCRIBE FORM -->
+  <section class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+    <form class="mb-12">
+      <label for="email" class="block text-ht-muted text-xs font-bold uppercase tracking-wider mb-3">Email Address</label>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="your@email.com"
+          class="flex-1 bg-ht-surface border border-ht-border text-ht-text placeholder-ht-muted/50 px-4 py-3 focus:outline-none focus:border-ht-accent transition-colors duration-200 text-sm"
+        />
+        <button type="submit" class="btn-primary flex-shrink-0">Subscribe</button>
+      </div>
+    </form>
+
+    <!-- What you get -->
+    <div>
+      <p class="section-label mb-5">What you get</p>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-ht-accent flex-shrink-0 mt-2"></span>
+          <div>
+            <p class="text-ht-text font-medium text-sm">New design release notifications</p>
+            <p class="text-ht-muted text-sm mt-0.5">First to know when a new design is released and ready to download.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-ht-accent flex-shrink-0 mt-2"></span>
+          <div>
+            <p class="text-ht-text font-medium text-sm">Kit restock and launch alerts</p>
+            <p class="text-ht-muted text-sm mt-0.5">Know when kits are back in stock or a new kit is available to order.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-ht-accent flex-shrink-0 mt-2"></span>
+          <div>
+            <p class="text-ht-text font-medium text-sm">Build guides and articles</p>
+            <p class="text-ht-muted text-sm mt-0.5">New guides, build logs, and field notes published to the site.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+</Layout>
